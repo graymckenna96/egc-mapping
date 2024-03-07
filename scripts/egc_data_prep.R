@@ -85,14 +85,25 @@ ecg_2015 <- base_world +
              size=4, alpha=I(0.4)) 
 
 ecg_2015
+ggsave("./figures/ecg_2015_map.png")
 
 # Crabs are already being observed well outside of native range. Let's check out an earlier year.
 
 ecg_2005 <- base_world + 
-  geom_point(data=df_years[['2005']], aes(x=longitude, y=latitude), color="#5f7141", fill="#a8a32f",
+  geom_point(data=df_years[['2005']], aes(x=longitude, y=latitude), color="#2FA8A3", fill="#2FA8A3",
              size=4, alpha=I(0.4)) 
 
 ecg_2005
+ggsave("./figures/ecg_2005_map.png")
 
 # Crabs present in new england, US, but still mostly in Europe
 
+# Let's look at 2023 distribution 
+ecg_2023 <- base_world + 
+  geom_point(data=df_years[['2023']], aes(x=longitude, y=latitude), color="#A32FA8", fill="#A32FA8",
+             size=4, alpha=I(0.2)) 
+
+ecg_2023
+ggsave("./figures/ecg_2023_map.png")
+
+# Wow, many crab
