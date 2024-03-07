@@ -15,4 +15,4 @@ csv_list = arcpy.ListFiles("*.csv")
 
 # Loop through and add all to map 
 for i in csv_list:
-    arcpy.management.XYTableToPoint(wd + i, i, "latitude", "longitude")
+    arcpy.management.XYTableToPoint(wd + i, i, "longitude", "latitude")
