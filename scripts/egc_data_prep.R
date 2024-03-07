@@ -61,6 +61,9 @@ df <- df %>% filter(quality_grade == "research")
 
 df <- df %>% drop_na(latitude, longitude)
 
+# Drop all columns except obs_date, latitude, longitude
+df <- df[c("obs_year", "latitude", "longitude")]
+
 # Create layers per year
 
 df_years <- split(df, df$obs_year)
@@ -107,3 +110,11 @@ ecg_2023
 ggsave("./figures/egc_2023_map.png")
 
 # Wow, many crab
+
+#### PREPARE DATA FOR ARCGIS PRO ####
+
+# Create csv for each year 
+
+for (i in seq_along(df_years)){
+  write.csv(df_years[[i]], file = paste0("./outputs/", names(df_years)[i], ".csv"), row.names = F)
+}
