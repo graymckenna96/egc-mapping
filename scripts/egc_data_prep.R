@@ -61,8 +61,8 @@ df <- df %>% filter(quality_grade == "research")
 
 df <- df %>% drop_na(latitude, longitude)
 
-# Drop all columns except obs_date, latitude, longitude
-df <- df[c("obs_year", "latitude", "longitude")]
+# Drop all columns except obs_year, latitude, longitude, and observed_on
+df <- df[c("obs_year", "latitude", "longitude", "observed_on")]
 
 # Create layers per year
 
@@ -118,3 +118,6 @@ ggsave("./figures/egc_2023_map.png")
 for (i in seq_along(df_years)){
   write.csv(df_years[[i]], file = paste0("./outputs/", names(df_years)[i], ".csv"), row.names = F)
 }
+
+# Save master dataset to a csv as well
+write.csv(df, ".outputs/egc-all-data.csv")
